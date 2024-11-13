@@ -75,7 +75,6 @@ For facial landmark detection, datasets such as the *iBUG 300-W* and similar fac
 
 
 
-Here's the paragraph summarizing the content you provided:
 
 In this project, a **FaceLandmarksAugmentation** class was implemented to apply various image augmentation techniques, such as cropping, random cropping, random rotation, and color jittering, specifically tailored for facial landmark detection. ![image](https://hackmd.io/_uploads/HkrIMVtk1l.png)
 This class initializes key parameters like image dimensions, brightness, and rotation limits. Methods such as `offset_crop` and `random_rotation` adjust landmark coordinates accordingly. A **Preprocessor** class initializes the augmentation methods and normalizes the data, while a **datasetlandmark** class, inheriting from `Dataset`, handles image paths, landmark coordinates, and cropping information parsed from XML files. The dataset is split into training and validation sets, with `DataLoader` objects created for each, and a function is defined to visualize images with corresponding landmarks.![image](https://hackmd.io/_uploads/HJco7EYy1e.png)
