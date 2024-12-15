@@ -13,53 +13,7 @@ The goal of the project is to develop a highly efficient model capable of accura
 5. Finally, we learned and implemented the facial landmark detection algorithm using the PyTorch framework.
 
 
-### MNIST-HANDWRITTEN DIGITS 
-The MNIST AND MNIST-HANDWRITTEN DIGITS datasets are used. These datasets contain 60,000 training samples and 10,000 test samples. Each sample in the MNIST dataset is a 28x28 pixel grayscale image of a single handwritten digit between 0 & 9.
-![image](https://hackmd.io/_uploads/ByroZQK11x.png)
 
-
-
-#### HYPERPARAMETERS
-
-
-| Hyperparameters | Value | 
-| -------- | -------- | 
-|   Batch-Size| 64
-Learning-rate	|0.001	
-num of Epochs|10
-Loss |      Cross Entropy Loss
-Optimizer |    Adam Optimizer
-
-
-#### RESULTS
-Accuracy-
-![image](https://hackmd.io/_uploads/SJdefmKyyg.png)
-Visualization-
-![image](https://hackmd.io/_uploads/SJPVGXFkJx.png)
-Graphs-
-![image](https://hackmd.io/_uploads/HJ9zLQYykx.png)
-
-
-### CIFAR-10
-The CIFAR-10 dataset is used. This dataset contains 60,000 samples, with 50,000 training samples and 10,000 test samples. Each sample in the CIFAR-10 dataset is a 32x32 pixel color image belonging to one of 10 different classes, such as airplanes, cars, birds, cats, and more.
-![image](https://hackmd.io/_uploads/H1Ub4XKkkx.png)
-
-#### HYPERPARAMETERS
-| Hyperparameters | Value | 
-| -------- | -------- | 
-|   Batch-Size| 1024
-Learning-rate	|0.0001
-num of Epochs|100
-Loss |      Cross Entropy Loss
-Optimizer |    Adam Optimizer
-#### RESULTS
-Accuracy-
-![image](https://hackmd.io/_uploads/BkWarmF1yg.png)
-
-
-
-Graphs-
-![image](https://hackmd.io/_uploads/ryNRL7YJkl.png)   ![image](https://hackmd.io/_uploads/HyZQD7Ykyg.png)
 ### CUSTOM-DATASET
 The dataset is sourced from the iBUG 300-W dataset with XML-based annotations for facial landmarks and crop coordinates. It extracts image paths, 68 landmark points, and face cropping coordinates. The preprocessing pipeline resizes images with padding, applies random augmentations such as color jitter, offset and random cropping, and random rotation, adjusting landmarks accordingly. Landmarks are normalized relative to image dimensions, and images are converted to grayscale before being transformed into tensors normalized between [-1, 1]. A dataset class handles parsing, preprocessing, and returning ready-to-use images and normalized landmarks.
 
