@@ -57,7 +57,7 @@ The goal of the project is to develop a highly efficient model capable of accura
     - Converts images to grayscale and transforms them into tensors normalized between [-1, 1].
 - **Dataset Class**: Handles parsing, preprocessing, and returning ready-to-use images and normalized landmarks.
 
-### Results
+### Result
 
 **Sample Output**:
 
