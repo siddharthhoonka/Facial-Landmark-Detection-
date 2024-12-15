@@ -1,110 +1,149 @@
-# FACIAL-LANDMARK-DETECTION
+# Facial Landmark Detection
 
-## OBJECTIVE
-The goal of the project is to develop a highly efficient model capable of accurately detecting facial key points in input images. This model will support real-time inference for applications such as face recognition, emotion detection, virtual makeup, and augmented reality (AR).
+## Objective
+The goal of the project is to develop a highly efficient model capable of accurately detecting facial key points in input images. This model will support real-time inference for applications such as:
+- Face recognition
+- Emotion detection
+- Virtual makeup
+- Augmented reality (AR)
 
-## LEARNING PROCESS
+## Learning Process
 
+1. **Deep Learning Basics**: 
+    - Started with understanding Deep Learning, Artificial Neural Networks, and Numpy.
+    - Developed a basic MNIST model.
+2. **Loss Functions and Optimizers**: 
+    - Studied loss functions like cross-entropy loss and optimizers such as Adam.
+    - Built an MNIST model using PyTorch.
+3. **CNN Architectures**: 
+    - Explored Convolutional Neural Networks (CNNs).
+    - Implemented a CIFAR-10 model.
+4. **Custom Dataset**: Created a custom dataset for facial landmark detection.
+5. **Facial Landmark Algorithm**: Learned and implemented the facial landmark detection algorithm using the PyTorch framework.
 
-1. The project began with an understanding of Deep Learning, Artificial Neural Networks, and Numpy, leading to the creation of a basic MNIST model.
-2. Next, we studied various loss functions like cross-entropy loss and optimizers like Adam, then learned PyTorch and built an MNIST model using this framework.
-3. This was followed by exploring Convolutional Neural Networks (CNNs) and studying various CNN architectures, culminating in the implementation of a CIFAR-10 model.
-4. We then created a custom dataset for facial landmark detection.
-5. Finally, we learned and implemented the facial landmark detection algorithm using the PyTorch framework.
+---
 
+## Custom Dataset
 
+- **Source**: The dataset is sourced from the iBUG 300-W dataset, which includes XML-based annotations for facial landmarks and crop coordinates.
+- **Pipeline**:
+    - Extracts image paths, 68 landmark points, and face cropping coordinates.
+    - Resizes images with padding and applies random augmentations such as:
+        - Color jitter
+        - Offset cropping
+        - Random cropping
+        - Random rotation
+    - Adjusts landmarks to match the augmentations.
+    - Normalizes landmarks relative to image dimensions.
+    - Converts images to grayscale and transforms them into tensors normalized between [-1, 1].
+- **Dataset Class**: Handles parsing, preprocessing, and returning ready-to-use images and normalized landmarks.
 
-### CUSTOM-DATASET
-The dataset is sourced from the iBUG 300-W dataset with XML-based annotations for facial landmarks and crop coordinates. It extracts image paths, 68 landmark points, and face cropping coordinates. The preprocessing pipeline resizes images with padding, applies random augmentations such as color jitter, offset and random cropping, and random rotation, adjusting landmarks accordingly. Landmarks are normalized relative to image dimensions, and images are converted to grayscale before being transformed into tensors normalized between [-1, 1]. A dataset class handles parsing, preprocessing, and returning ready-to-use images and normalized landmarks.
+### Results
 
-#### RESULTS
-Output-
-![image](https://hackmd.io/_uploads/S1GGjmYkkg.png)
+**Sample Output**:
 
-### FACIAL LANDMARK DETECTION
+![Output Image](https://hackmd.io/_uploads/S1GGjmYkkg.png)
 
-For facial landmark detection, datasets such as the *iBUG 300-W* and similar facial landmark datasets are commonly used. These datasets contain a variety of images annotated with facial key points. For example, the *iBUG 300-W* dataset consists of thousands of images, with each image labeled with 68 facial landmarks, including points around the eyes, nose, mouth, and jawline. The dataset is typically divided into training and test sets, enabling model training and evaluation for tasks like face recognition, emotion analysis, and augmented reality applications.
+---
 
-#### PROCEDURE
+## Facial Landmark Detection
 
+### Dataset
 
+- **Commonly Used Datasets**: 
+    - iBUG 300-W: Thousands of images labeled with 68 facial landmarks (eyes, nose, mouth, jawline).
+    - **Applications**: Face recognition, emotion analysis, augmented reality.
 
+---
 
-In this project, a **FaceLandmarksAugmentation** class was implemented to apply various image augmentation techniques, such as cropping, random cropping, random rotation, and color jittering, specifically tailored for facial landmark detection. ![image](https://hackmd.io/_uploads/HkrIMVtk1l.png)
-This class initializes key parameters like image dimensions, brightness, and rotation limits. Methods such as `offset_crop` and `random_rotation` adjust landmark coordinates accordingly. A **Preprocessor** class initializes the augmentation methods and normalizes the data, while a **datasetlandmark** class, inheriting from `Dataset`, handles image paths, landmark coordinates, and cropping information parsed from XML files. The dataset is split into training and validation sets, with `DataLoader` objects created for each, and a function is defined to visualize images with corresponding landmarks.![image](https://hackmd.io/_uploads/HJco7EYy1e.png)
-The **network design** is a modular convolutional neural network (CNN) with depthwise separable convolutions to improve efficiency. It includes an entry block for initial feature extraction, middle blocks with residual connections, and an exit block that outputs facial landmark coordinates. The CNN uses batch normalization and LeakyReLU for better performance. A training loop is implemented to run for 30 epochs, where the model computes loss, updates weights using an optimizer, validates after each epoch, and saves checkpoints to prevent overfitting and retain the best-performing model.
+### Procedure
 
+1. **Augmentation**:
+    - Implemented a `FaceLandmarksAugmentation` class for tailored augmentation techniques:
+        - Cropping
+        - Random cropping
+        - Random rotation
+        - Color jittering
+    - Key parameters include image dimensions, brightness, and rotation limits.
+    - Methods like `offset_crop` and `random_rotation` adjust landmark coordinates accordingly.
 
+2. **Preprocessor**:
+    - Initializes augmentation methods.
+    - Normalizes data.
 
+3. **Dataset Class**:
+    - Inherits from `Dataset`.
+    - Handles image paths, landmark coordinates, and cropping information parsed from XML files.
+    - Splits data into training and validation sets.
+    - Utilizes `DataLoader` for batch processing.
 
-The project employs **efficient convolutions** using depthwise separable convolutions to reduce computational complexity and enhance efficiency. Batch normalization and LeakyReLU activation functions are used throughout the architecture to improve model performance and ensure better convergence during training. A training loop was implemented to run for 30 epochs, during which the model computes the training loss, performs backpropagation, and updates the weights using an optimizer. After each epoch, the model is validated, and checkpoints of the model's state, including weights and optimizer settings, are saved. This process helps facilitate progress recovery and prevent overfitting by retaining the best-performing model based on validation metrics.
-![image](https://hackmd.io/_uploads/BJo3HEYJkl.png)
-#### HYPERPARAMETERS
-| Hyperparameters | Value | 
-| -------- | -------- | 
-|   Batch-Size| 32
-Learning-rate	|0.00075
-num of Epochs|30
-Loss |      MSE LOSS
-Optimizer |    Adam Optimizer
-#### RESULTS
-LOSS-
- 
-Loss at epoch 1:
-![image](https://hackmd.io/_uploads/S1kkuNKJ1l.png)
-Loss at epoch 2:
-![image](https://hackmd.io/_uploads/H1C-OEKykg.png)
-Loss at epoch 3:
-![image](https://hackmd.io/_uploads/HJfr_4Kyyx.png)
+**Visualization Example**:
 
+![Visualization](https://hackmd.io/_uploads/HkrIMVtk1l.png)
 
-GRAPHS -
-![image](https://hackmd.io/_uploads/S1qu_VYkyg.png)
+---
 
+### Network Design
 
-### SOFTWARE TOOLS USED 
- Python
-Numpy
-PyTorch
-PIL
-Matplotlib
+- **Architecture**:
+    - Modular CNN with depthwise separable convolutions to improve efficiency.
+    - **Entry Block**: Initial feature extraction.
+    - **Middle Blocks**: Residual connections.
+    - **Exit Block**: Outputs facial landmark coordinates.
+- **Enhancements**:
+    - Batch normalization and LeakyReLU for better performance.
 
+- **Training Loop**:
+    - Runs for 30 epochs.
+    - Computes training loss and performs backpropagation.
+    - Updates weights using an optimizer.
+    - Validates model after each epoch.
+    - Saves checkpoints to prevent overfitting and retain the best model.
 
+**Network Design Visualization**:
 
+![Network Design](https://hackmd.io/_uploads/BJo3HEYJkl.png)
 
+---
 
+### Hyperparameters
 
+| Hyperparameter    | Value       |
+|-------------------|-------------|
+| Batch Size        | 32          |
+| Learning Rate     | 0.00075     |
+| Number of Epochs  | 30          |
+| Loss Function     | MSE Loss    |
+| Optimizer         | Adam        |
 
+---
 
+### Results
 
+#### Loss
 
+**Loss at Epoch 1**:
 
+![Loss Epoch 1](https://hackmd.io/_uploads/S1kkuNKJ1l.png)
 
+**Loss at Epoch 2**:
 
+![Loss Epoch 2](https://hackmd.io/_uploads/H1C-OEKykg.png)
 
+**Loss at Epoch 3**:
 
+![Loss Epoch 3](https://hackmd.io/_uploads/HJfr_4Kyyx.png)
 
+#### Graphs
 
+![Training Graphs](https://hackmd.io/_uploads/S1qu_VYkyg.png)
 
+---
 
+## Software Tools Used
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+- Python
+- Numpy
+- PyTorch
+- PIL
+- Matplotlib
