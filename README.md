@@ -20,7 +20,7 @@ The dataset is sourced from the iBUG 300-W dataset with XML-based annotations fo
 #### RESULTS
 Output-
 ![image](https://hackmd.io/_uploads/S1GGjmYkkg.png)
-## MAIN PROJECT
+
 ### FACIAL LANDMARK DETECTION
 
 For facial landmark detection, datasets such as the *iBUG 300-W* and similar facial landmark datasets are commonly used. These datasets contain a variety of images annotated with facial key points. For example, the *iBUG 300-W* dataset consists of thousands of images, with each image labeled with 68 facial landmarks, including points around the eyes, nose, mouth, and jawline. The dataset is typically divided into training and test sets, enabling model training and evaluation for tasks like face recognition, emotion analysis, and augmented reality applications.
