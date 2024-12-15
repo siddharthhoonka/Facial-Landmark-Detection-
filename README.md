@@ -1,5 +1,24 @@
 # Facial Landmark Detection
 
+##  **Table of Contents**
+- [**FACIAL LANDMARK DETECTION**](#FACIAL-LANDMARK-DETECTION)
+  - [**Table of Contents**](#table-of-contents)
+  - [**Objective**](#OBJECTIVE)
+  - [**Learning Process**](#LEARNING-PROCESS)
+  - [**Custom Dataset**](#CUSTOM-DATASET)
+  - [**Facial Landmark Detection**](#FACIAL-LANDMARK-DETECTION)
+    - [Dataset](#Dataset)
+    - [Procedure](#PROCEDURE)
+      - [1. Augmentation](#1Augmentation)
+      - [2. Preprocessor](#2Preprocessor)
+      - [3. Dataset Class](#3Dataset-Class)
+  - [**Network Design**](#Network-Design)
+      - [Architecture](#Architecture)
+      - [Enhancements](#Enhancements)
+      - [Training Loop](#Training-Loop)
+   - [**Hyperparameters**](#HYPERPARAMETERS)
+  - [**Results**](#results)
+
 ## Objective
 The goal of the project is to develop a highly efficient model capable of accurately detecting facial key points in input images. This model will support real-time inference for applications such as:
 - Face recognition
