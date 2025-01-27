@@ -1,0 +1,11 @@
+opencv-python-headless
+torch
+torchvision
+streamlit
+Pillow
+matplotlib
+numpy
+requests
+tqdm
+scikit-image
+gdown
