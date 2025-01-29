@@ -33,7 +33,7 @@ def draw_landmarks_on_faces(image, faces_landmarks):
         landmarks = landmarks.view(-1, 2).numpy()
         for x, y in landmarks:
             try:
-                cv2.circle(image, (int((x * width) + left), int((y * height) + top)), 2, [255, 0, 0], -1)
+                cv2.circle(image, (int((x * width) + left), int((y * height) + top)), 2, [0, 255, 255], -1)
             except Exception as e:
                 print(f"Error drawing landmark: {e}")
     return image
@@ -41,7 +41,7 @@ def draw_landmarks_on_faces(image, faces_landmarks):
 @torch.no_grad()
 def inference_image(image):
     image_np = np.array(image)
-    st.image(image_np, caption='Original Image')
+    st.image(image_np, caption='Original Image', use_column_width=True)
     image_bgr = cv2.cvtColor(image_np, cv2.COLOR_RGB2BGR)
     gray = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2GRAY)
     faces = face_cascade.detectMultiScale(gray, 1.1, 5, minSize=(30, 30))
@@ -59,11 +59,12 @@ def main():
     st.markdown(
         """
         <style>
-            .title { text-align: center; font-size: 36px; font-weight: bold; color: #4CAF50; }
-            .subtext { text-align: center; font-size: 18px; }
-            .footer { font-size: 12px; text-align: center; margin-top: 50px; color: #888; }
-            .stTextInput > div > div > input { border-radius: 10px; border: 1px solid #ddd; padding: 10px; }
-            .stButton > button { background-color: #4CAF50; color: white; border-radius: 5px; padding: 10px; }
+            .title { text-align: center; font-size: 40px; font-weight: bold; color: #FFA500; }
+            .subtext { text-align: center; font-size: 20px; color: #666; }
+            .footer { font-size: 14px; text-align: center; margin-top: 50px; color: #999; }
+            .stTextInput > div > div > input { border-radius: 8px; border: 1px solid #ccc; padding: 12px; font-size: 16px; }
+            .stButton > button { background-color: #FFA500; color: white; border-radius: 6px; padding: 12px; font-size: 16px; }
+            .stFileUploader > div > div { border-radius: 10px; border: 2px dashed #FFA500; padding: 12px; }
         </style>
         """,
         unsafe_allow_html=True
@@ -98,7 +99,7 @@ def main():
         image_np = np.array(image)
         output_image = inference_image(image_np)
         if output_image is not None:
-            st.image(cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB), caption="Landmarks Detected")
+            st.image(cv2.cvtColor(output_image, cv2.COLOR_BGR2RGB), caption="Landmarks Detected", use_column_width=True)
     
     st.markdown("<p class='footer'>Siddharth Hoonka</p>", unsafe_allow_html=True)
 
