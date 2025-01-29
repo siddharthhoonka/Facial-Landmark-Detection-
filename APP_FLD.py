@@ -8,6 +8,15 @@ import requests
 from io import BytesIO  
 from file_loader import load_model as download_model
 
+class XceptionNet(torch.nn.Module):
+    def __init__(self, middle_block_n=6):
+        super(XceptionNet, self).__init__()
+        # Define the architecture of XceptionNet here
+        self.dummy_layer = torch.nn.Linear(1024, 136)
+
+    def forward(self, x):
+        return self.dummy_layer(x)
+
 # Load the model
 model_path = download_model()
 if model_path:
