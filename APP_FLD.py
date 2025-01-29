@@ -311,7 +311,7 @@ def main():
 
 st.markdown(
         """
-        <p style="font-size:12px; text-align: center;">Rajas Daryapurkar</p>
+        <p style="font-size:12px; text-align: center;">Siddharth Hoonka</p>
         """,
         unsafe_allow_html=True
 )
