@@ -260,6 +260,7 @@ def inference_image(image):
         else:
             landmarks_predictions = model(preprocessed_image)
 
+
         outputs.append((landmarks_predictions.cpu(), (x, y, h, w)))
 
     output_image = draw_landmarks_on_faces(image_bgr, outputs)
